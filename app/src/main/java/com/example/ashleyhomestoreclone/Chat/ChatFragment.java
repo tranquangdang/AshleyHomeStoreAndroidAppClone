@@ -44,15 +44,15 @@ import java.util.HashMap;
 
 
 public class ChatFragment extends BaseFragment {
-    FirebaseUser firebaseUser;
-    DatabaseReference reference;
+    FirebaseUser firebaseUser202;
+    DatabaseReference reference202;
 
-    ImageButton btnSend;
-    EditText textSend;
+    ImageButton btnSend202;
+    EditText textSend202;
 
-    MessageAdapter messageAdapter;
-    ArrayList<ChatMessageBean> arrayList;
-    RecyclerView recyclerView;
+    MessageAdapter messageAdapter202;
+    ArrayList<ChatMessageBean> arrayList202;
+    RecyclerView recyclerView202;
 
     public ChatFragment () {
     }
@@ -67,80 +67,80 @@ public class ChatFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_fragment_chat, container, false);
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser == null) {
+        View view202 = inflater.inflate(R.layout.layout_fragment_chat, container, false);
+        firebaseUser202 = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser202 == null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setMessage("You should login!")
                     .setCancelable(false)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            mActivity.gotoFragment(new LoginFragment());
+                            mActivity202.gotoFragment(new LoginFragment());
                         }
                     });
             AlertDialog alert = builder.create();
             alert.show();
         }
-        recyclerView = view.findViewById(R.id.recyclerChat);
+        recyclerView202 = view202.findViewById(R.id.recyclerChat);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView202.setLayoutManager(linearLayoutManager);
 
-        btnSend = view.findViewById(R.id.btnSend);
-        textSend = view.findViewById(R.id.chat_input);
+        btnSend202 = view202.findViewById(R.id.btnSend);
+        textSend202 = view202.findViewById(R.id.chat_input);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUser202 = FirebaseAuth.getInstance().getCurrentUser();
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        btnSend202.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                String time = dateFormat.format(Calendar.getInstance().getTime());
-                String msg = textSend.getText().toString();
+                SimpleDateFormat dateFormat202 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                String time202 = dateFormat202.format(Calendar.getInstance().getTime());
+                String msg = textSend202.getText().toString();
                 if (!msg.equals("")) {
-                    sendMessage(firebaseUser.getUid(),msg, time);
+                    sendMessage(firebaseUser202.getUid(),msg, time202);
                 } else {
                     Toast.makeText(getActivity(), "You can't send empty message!", Toast.LENGTH_SHORT).show();
                 }
-                textSend.setText("");
+                textSend202.setText("");
             }
         });
 
-        if(firebaseUser != null) {
+        if(firebaseUser202 != null) {
             readMessages();
         }
 
-        return view;
+        return view202;
     }
 
     private void sendMessage(String sender, String message, String time) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference202 = FirebaseDatabase.getInstance().getReference();
 
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("sender", sender);
-        hashMap.put("receiver", "admin");
-        hashMap.put("message", message);
-        hashMap.put("time", time);
+        HashMap<String, Object> hashMap202 = new HashMap<>();
+        hashMap202.put("sender", sender);
+        hashMap202.put("receiver", "admin");
+        hashMap202.put("message", message);
+        hashMap202.put("time", time);
 
-        reference.child("Chats").push().setValue(hashMap);
+        reference202.child("Chats").push().setValue(hashMap202);
     }
 
     public void readMessages() {
-        arrayList = new ArrayList<>();
+        arrayList202 = new ArrayList<>();
 
-        reference = FirebaseDatabase.getInstance().getReference("Chats");
-        reference.orderByChild("time").addValueEventListener(new ValueEventListener() {
+        reference202 = FirebaseDatabase.getInstance().getReference("Chats");
+        reference202.orderByChild("time").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                arrayList.clear();
+                arrayList202.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    ChatMessageBean chat = dataSnapshot.getValue(ChatMessageBean.class);
-                    if(chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals("admin") ||
-                            chat.getReceiver().equals("admin") && chat.getSender().equals(firebaseUser.getUid()))
-                        arrayList.add(chat);
+                    ChatMessageBean chat202 = dataSnapshot.getValue(ChatMessageBean.class);
+                    if(chat202.getReceiver().equals(firebaseUser202.getUid()) && chat202.getSender().equals("admin") ||
+                            chat202.getReceiver().equals("admin") && chat202.getSender().equals(firebaseUser202.getUid()))
+                        arrayList202.add(chat202);
 
-                    messageAdapter = new MessageAdapter(getContext(), arrayList);
-                    recyclerView.setAdapter(messageAdapter);
+                    messageAdapter202 = new MessageAdapter(getContext(), arrayList202);
+                    recyclerView202.setAdapter(messageAdapter202);
                 }
             }
 

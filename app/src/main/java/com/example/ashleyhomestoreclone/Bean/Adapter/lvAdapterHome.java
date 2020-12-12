@@ -25,17 +25,17 @@ public class lvAdapterHome extends ArrayAdapter<lvBeanHome> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View v = convertView;
+        View v202 = convertView;
 
-        if(null == v){
+        if(null == v202){
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.layout_lv_adapter_home, null);
+            v202 = inflater.inflate(R.layout.layout_lv_adapter_home, null);
         }
-        lvBeanHome mListView = getItem(position);
-        ImageView img = v.findViewById(R.id.img_lv_home);
+        lvBeanHome mListView202 = getItem(position);
+        ImageView img202 = v202.findViewById(R.id.img_lv_home);
 
-        img.setImageResource(mListView.getImg());
+        img202.setImageResource(mListView202.getImg());
 
-        return v;
+        return v202;
     }
 }

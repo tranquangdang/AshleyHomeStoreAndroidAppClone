@@ -29,35 +29,35 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class RegisterFragment extends BaseFragment {
-    TextInputEditText  firstName, lastName, email, confirmEmail, password, confirmPass;
-    Button btnReg;
-    MaterialCheckBox allowAge;
+    TextInputEditText  firstName202, lastName202, email202, confirmEmail202, password202, confirmPass202;
+    Button btnReg202;
+    MaterialCheckBox allowAge202;
 
-    FirebaseAuth auth;
-    DatabaseReference reference;
+    FirebaseAuth auth202;
+    DatabaseReference reference202;
 
     private void Register(String firstName, String lastName, String email, String password) {
-        auth.createUserWithEmailAndPassword(email,password)
+        auth202.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            FirebaseUser firebaseUser = auth.getCurrentUser();
-                            assert firebaseUser != null;
-                            String userid = firebaseUser.getUid();
-                            reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+                            FirebaseUser firebaseUser202 = auth202.getCurrentUser();
+                            assert firebaseUser202 != null;
+                            String userid202 = firebaseUser202.getUid();
+                            reference202 = FirebaseDatabase.getInstance().getReference("Users").child(userid202);
 
-                            HashMap<String, String> hashMap = new HashMap<>();
-                            hashMap.put("id", userid);
-                            hashMap.put("firstName", firstName);
-                            hashMap.put("lastName", lastName);
+                            HashMap<String, String> hashMap202 = new HashMap<>();
+                            hashMap202.put("id", userid202);
+                            hashMap202.put("firstName", firstName);
+                            hashMap202.put("lastName", lastName);
 
-                            reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            reference202.setValue(hashMap202).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                                        startActivity(intent);
+                                        Intent intent202 = new Intent(getActivity(), MainActivity.class);
+                                        startActivity(intent202);
                                         Toast.makeText(getActivity(), "Register Successful!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -72,54 +72,54 @@ public class RegisterFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_register_account, container, false);
+        View view202 = inflater.inflate(R.layout.layout_register_account, container, false);
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar_register);
-        toolbar.setLogo(ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_arrow_back_ios_24_white));
-        View logoView = toolbar.getChildAt(1);
+        Toolbar toolbar202 = view202.findViewById(R.id.toolbar_register);
+        toolbar202.setLogo(ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_arrow_back_ios_24_white));
+        View logoView = toolbar202.getChildAt(1);
         logoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.popFragments();
+                mActivity202.popFragments();
             }
         });
 
-        firstName = view.findViewById(R.id.firstname);
-        lastName = view.findViewById(R.id.lastname);
-        email = view.findViewById(R.id.email_register);
-        confirmEmail = view.findViewById(R.id.confirm_email_register);
-        password = view.findViewById(R.id.password_register);
-        confirmPass = view.findViewById(R.id.confirm_password_register);
-        btnReg = view.findViewById(R.id.sign_up);
-        allowAge = view.findViewById(R.id.allow_age);
+        firstName202 = view202.findViewById(R.id.firstname);
+        lastName202 = view202.findViewById(R.id.lastname);
+        email202 = view202.findViewById(R.id.email_register);
+        confirmEmail202 = view202.findViewById(R.id.confirm_email_register);
+        password202 = view202.findViewById(R.id.password_register);
+        confirmPass202 = view202.findViewById(R.id.confirm_password_register);
+        btnReg202 = view202.findViewById(R.id.sign_up);
+        allowAge202 = view202.findViewById(R.id.allow_age);
 
-        auth = FirebaseAuth.getInstance();
+        auth202 = FirebaseAuth.getInstance();
 
-        btnReg.setOnClickListener(new View.OnClickListener() {
+        btnReg202.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String txt_firstName = firstName.getText().toString();
-                String txt_lastName = lastName.getText().toString();
-                String txt_email = email.getText().toString();
-                String txt_confirmEmail = confirmEmail.getText().toString();
-                String txt_password = password.getText().toString();
-                String txt_confirmPass = confirmPass.getText().toString();
+                String txt_firstName202 = firstName202.getText().toString();
+                String txt_lastName202 = lastName202.getText().toString();
+                String txt_email202 = email202.getText().toString();
+                String txt_confirmEmail202 = confirmEmail202.getText().toString();
+                String txt_password202 = password202.getText().toString();
+                String txt_confirmPass202 = confirmPass202.getText().toString();
 
-                if (TextUtils.isEmpty(txt_firstName) || TextUtils.isEmpty(txt_lastName) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
+                if (TextUtils.isEmpty(txt_firstName202) || TextUtils.isEmpty(txt_lastName202) || TextUtils.isEmpty(txt_email202) || TextUtils.isEmpty(txt_password202)) {
                     Toast.makeText(getActivity(), "All fields are required!", Toast.LENGTH_SHORT).show();
-                } else if (!txt_confirmEmail.equals(txt_email)) {
+                } else if (!txt_confirmEmail202.equals(txt_email202)) {
                     Toast.makeText(getActivity(), "Email does not match!", Toast.LENGTH_SHORT).show();
-                } else if (!txt_confirmPass.equals(txt_password)) {
+                } else if (!txt_confirmPass202.equals(txt_password202)) {
                     Toast.makeText(getActivity(), "Password does not match!", Toast.LENGTH_SHORT).show();
-                } else if (!allowAge.isChecked()) {
+                } else if (!allowAge202.isChecked()) {
                         Toast.makeText(getActivity(), "Verify your age before signing up!", Toast.LENGTH_SHORT).show();
-                } else if (txt_password.length() < 6) {
+                } else if (txt_password202.length() < 6) {
                     Toast.makeText(getActivity(), "Password must be at least 6 characters!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Register(txt_firstName, txt_lastName, txt_email, txt_password);
+                    Register(txt_firstName202, txt_lastName202, txt_email202, txt_password202);
                 }
             }
         });
-        return view;
+        return view202;
     }
 }

@@ -26,19 +26,19 @@ public class gvAdapterShop extends ArrayAdapter<gvBeanShop> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View v = convertView;
+        View v202 = convertView;
 
-        if(null == v){
+        if(null == v202){
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.layout_gv_adapter_shop, null);
+            v202 = inflater.inflate(R.layout.layout_gv_adapter_shop, null);
         }
-        gvBeanShop mListView = getItem(position);
-        ImageView img = v.findViewById(R.id.img_gv_shop);
-        TextView title = v.findViewById(R.id.cate_gv_shop);
+        gvBeanShop mListView202 = getItem(position);
+        ImageView img202 = v202.findViewById(R.id.img_gv_shop);
+        TextView title202 = v202.findViewById(R.id.cate_gv_shop);
 
-        img.setImageResource(mListView.getImg());
-        title.setText(mListView.getCate());
+        img202.setImageResource(mListView202.getImg());
+        title202.setText(mListView202.getCate());
 
-        return v;
+        return v202;
     }
 }

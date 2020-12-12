@@ -17,17 +17,17 @@ import java.util.List;
 
 public class vpProductDetailsAdapter extends PagerAdapter {
 
-    private List<ProductDetailsBean> product;
-    private Context context;
+    private List<ProductDetailsBean> product202;
+    private Context context202;
 
-    public vpProductDetailsAdapter(List<ProductDetailsBean> product, Context context) {
-        this.product = product;
-        this.context = context;
+    public vpProductDetailsAdapter(List<ProductDetailsBean> product202, Context context202) {
+        this.product202 = product202;
+        this.context202 = context202;
     }
 
     @Override
     public int getCount() {
-        return product.size();
+        return product202.size();
     }
 
     @Override
@@ -38,15 +38,15 @@ public class vpProductDetailsAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_viewpager_product, container,false);
+        View view202 = LayoutInflater.from(context202).inflate(R.layout.item_viewpager_product, container,false);
 
-        ImageView imageView;
-        imageView = view.findViewById(R.id.img_vp_product);
+        ImageView imageView202;
+        imageView202 = view202.findViewById(R.id.img_vp_product);
 
-        imageView.setImageResource(product.get(position).getImg());
+        imageView202.setImageResource(product202.get(position).getImg());
 
-        container.addView(view, 0);
-        return view;
+        container.addView(view202, 0);
+        return view202;
     }
 
     @Override

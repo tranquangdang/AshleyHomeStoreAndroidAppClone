@@ -34,38 +34,38 @@ public class ShopFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_fragment_shop, container, false);
-        GridView gridView;
-        ArrayList arrayList =new ArrayList<>();
-        gvAdapterShop gvAdapterShop;
+        View view202 = inflater.inflate(R.layout.layout_fragment_shop, container, false);
+        GridView gridView202;
+        ArrayList arrayList202 =new ArrayList<>();
+        gvAdapterShop gvAdapterShop202;
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar_search);
+        Toolbar toolbar = view202.findViewById(R.id.toolbar_search);
         toolbar.inflateMenu(R.menu.toobar_search_shop);
 
-        gridView = (GridView) view.findViewById(R.id.gvShop);
-        arrayList.add(new gvBeanShop(R.drawable.furniture,"Furniture"));
-        arrayList.add(new gvBeanShop(R.drawable.mattresses,"Mattresses"));
-        arrayList.add(new gvBeanShop(R.drawable.kids,"Kids"));
-        arrayList.add(new gvBeanShop(R.drawable.baby,"Baby + Toddler"));
-        arrayList.add(new gvBeanShop(R.drawable.outdoor,"Outdoor"));
-        arrayList.add(new gvBeanShop(R.drawable.bath,"Bath"));
-        arrayList.add(new gvBeanShop(R.drawable.bedding,"Bedding"));
-        arrayList.add(new gvBeanShop(R.drawable.decor,"Decor + Pillows"));
-        arrayList.add(new gvBeanShop(R.drawable.rugs,"Rugs"));
-        arrayList.add(new gvBeanShop(R.drawable.lightning,"Lighting"));
-        arrayList.add(new gvBeanShop(R.drawable.sales,"Deals"));
+        gridView202 = (GridView) view202.findViewById(R.id.gvShop);
+        arrayList202.add(new gvBeanShop(R.drawable.furniture,"Furniture"));
+        arrayList202.add(new gvBeanShop(R.drawable.mattresses,"Mattresses"));
+        arrayList202.add(new gvBeanShop(R.drawable.kids,"Kids"));
+        arrayList202.add(new gvBeanShop(R.drawable.baby,"Baby + Toddler"));
+        arrayList202.add(new gvBeanShop(R.drawable.outdoor,"Outdoor"));
+        arrayList202.add(new gvBeanShop(R.drawable.bath,"Bath"));
+        arrayList202.add(new gvBeanShop(R.drawable.bedding,"Bedding"));
+        arrayList202.add(new gvBeanShop(R.drawable.decor,"Decor + Pillows"));
+        arrayList202.add(new gvBeanShop(R.drawable.rugs,"Rugs"));
+        arrayList202.add(new gvBeanShop(R.drawable.lightning,"Lighting"));
+        arrayList202.add(new gvBeanShop(R.drawable.sales,"Deals"));
 
 
-        gvAdapterShop = new gvAdapterShop(getContext(),R.layout.layout_gv_adapter_shop,arrayList);
-        gridView.setAdapter(gvAdapterShop);
+        gvAdapterShop202 = new gvAdapterShop(getContext(),R.layout.layout_gv_adapter_shop,arrayList202);
+        gridView202.setAdapter(gvAdapterShop202);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView202.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mActivity.pushFragments("SHOP_FRAGMENT", new ProductListFragment(),true);
+                mActivity202.pushFragments("SHOP_FRAGMENT", new ProductListFragment(),true);
             }
         });
-        return view;
+        return view202;
     }
 
 }

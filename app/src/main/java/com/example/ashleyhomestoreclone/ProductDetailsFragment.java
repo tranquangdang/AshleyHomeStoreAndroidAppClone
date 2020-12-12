@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDetailsFragment extends BaseFragment {
-    DotsIndicator indicator_vp;
-    ViewPager viewPager;
-    vpProductDetailsAdapter adapter;
-    List<ProductDetailsBean> productList;
+    DotsIndicator indicator_vp202;
+    ViewPager viewPager202;
+    vpProductDetailsAdapter adapter202;
+    List<ProductDetailsBean> productList202;
 
     public ProductDetailsFragment () {
 
@@ -32,33 +32,33 @@ public class ProductDetailsFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_fragment_product_details, container, false);
+        View view202 = inflater.inflate(R.layout.layout_fragment_product_details, container, false);
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar_details);
-        toolbar.inflateMenu(R.menu.toobar_search_shop);
-        toolbar.setLogo(ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_arrow_back_ios_24));
-        View logoView = toolbar.getChildAt(2);
+        Toolbar toolbar202 = view202.findViewById(R.id.toolbar_details);
+        toolbar202.inflateMenu(R.menu.toobar_search_shop);
+        toolbar202.setLogo(ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_arrow_back_ios_24));
+        View logoView = toolbar202.getChildAt(2);
         logoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.popFragments();
+                mActivity202.popFragments();
             }
         });
 
-        indicator_vp = (DotsIndicator) view.findViewById(R.id.indicator_vp);
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager_product_details);
+        indicator_vp202 = (DotsIndicator) view202.findViewById(R.id.indicator_vp);
+        viewPager202 = (ViewPager) view202.findViewById(R.id.viewPager_product_details);
 
-        productList = new ArrayList<>();
-        productList.add(new ProductDetailsBean(R.drawable.tu1));
-        productList.add(new ProductDetailsBean(R.drawable.tu2));
-        productList.add(new ProductDetailsBean(R.drawable.tu3));
-        productList.add(new ProductDetailsBean(R.drawable.tu4));
-        productList.add(new ProductDetailsBean(R.drawable.tu5));
-        productList.add(new ProductDetailsBean(R.drawable.tu7));
+        productList202 = new ArrayList<>();
+        productList202.add(new ProductDetailsBean(R.drawable.tu1));
+        productList202.add(new ProductDetailsBean(R.drawable.tu2));
+        productList202.add(new ProductDetailsBean(R.drawable.tu3));
+        productList202.add(new ProductDetailsBean(R.drawable.tu4));
+        productList202.add(new ProductDetailsBean(R.drawable.tu5));
+        productList202.add(new ProductDetailsBean(R.drawable.tu7));
 
-        adapter = new vpProductDetailsAdapter(productList, getContext());
-        viewPager.setAdapter(adapter);
-        indicator_vp.setViewPager(viewPager);
-        return view;
+        adapter202 = new vpProductDetailsAdapter(productList202, getContext());
+        viewPager202.setAdapter(adapter202);
+        indicator_vp202.setViewPager(viewPager202);
+        return view202;
     }
 }

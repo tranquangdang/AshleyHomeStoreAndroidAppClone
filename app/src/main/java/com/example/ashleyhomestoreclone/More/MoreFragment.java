@@ -12,7 +12,7 @@ import com.example.ashleyhomestoreclone.Bean.BaseFragment;
 import com.example.ashleyhomestoreclone.R;
 
 public class MoreFragment extends BaseFragment {
-    private Button btnRegister, btnLogin;
+    private Button btnRegister202, btnLogin202;
 
     public MoreFragment () {
 
@@ -23,19 +23,19 @@ public class MoreFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_fragment_more, container, false);
 
-        btnRegister = (Button) view.findViewById(R.id.btn_register);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnRegister202 = (Button) view.findViewById(R.id.btn_register);
+        btnRegister202.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mActivity.pushFragments("MORE_FRAGMENT", new RegisterFragment(),true);
+                mActivity202.pushFragments("MORE_FRAGMENT", new RegisterFragment(),true);
             }
         });
 
-        btnLogin = (Button) view.findViewById(R.id.btn_login);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin202 = (Button) view.findViewById(R.id.btn_login);
+        btnLogin202.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mActivity.pushFragments("MORE_FRAGMENT", new LoginFragment(),true);
+                mActivity202.pushFragments("MORE_FRAGMENT", new LoginFragment(),true);
             }
         });
         return view;

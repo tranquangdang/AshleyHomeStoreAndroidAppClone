@@ -20,12 +20,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder> {
-    Context context;
-    ArrayList<ProductListBean> arrayList;
+    Context context202;
+    ArrayList<ProductListBean> arrayList202;
 
-    public ProductListAdapter(Context context, ArrayList<ProductListBean> arrayList) {
-        this.context = context;
-        this.arrayList = arrayList;
+    public ProductListAdapter(Context context202, ArrayList<ProductListBean> arrayList202) {
+        this.context202 = context202;
+        this.arrayList202 = arrayList202;
     }
 
     @NonNull
@@ -35,45 +35,45 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         return new ProductListViewHolder(view);
     }
 
-    public String formatNumberCurrency(double number)
+    public String formatNumberCurrency(double number202)
     {
-        DecimalFormat formatter = new DecimalFormat("###,###,###.##");
-        return "$" + formatter.format(Double.parseDouble(String.valueOf(number)));
+        DecimalFormat formatter202 = new DecimalFormat("###,###,###.##");
+        return "$" + formatter202.format(Double.parseDouble(String.valueOf(number202)));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductListViewHolder holder, int position) {
-        ProductListBean productListBean = arrayList.get(position);
-        holder.imgProduct.setImageResource(productListBean.getImg());
-        holder.nameProduct.setText(productListBean.getName());
-        holder.price.setText(formatNumberCurrency(productListBean.getPrice()));
-        holder.disPrice.setText(formatNumberCurrency(productListBean.getDisPrice()));
+        ProductListBean productListBean202 = arrayList202.get(position);
+        holder.imgProduct202.setImageResource(productListBean202.getImg());
+        holder.nameProduct202.setText(productListBean202.getName());
+        holder.price202.setText(formatNumberCurrency(productListBean202.getPrice()));
+        holder.disPrice202.setText(formatNumberCurrency(productListBean202.getDisPrice()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)context).pushFragments("HOME_FRAGMENT", new ProductDetailsFragment(),true);
+                ((MainActivity)context202).pushFragments("HOME_FRAGMENT", new ProductDetailsFragment(),true);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return arrayList202.size();
     }
 
     public class ProductListViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgProduct;
-        TextView nameProduct;
-        TextView price, disPrice;
+        ImageView imgProduct202;
+        TextView nameProduct202;
+        TextView price202, disPrice202;
         public ProductListViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgProduct = itemView.findViewById(R.id.imgProductList);
-            nameProduct = itemView.findViewById(R.id.nameProductList);
-            price = itemView.findViewById(R.id.priceProductList);
-            disPrice = itemView.findViewById(R.id.discountPriceProductList);
-            disPrice.setPaintFlags(disPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            imgProduct202 = itemView.findViewById(R.id.imgProductList);
+            nameProduct202 = itemView.findViewById(R.id.nameProductList);
+            price202 = itemView.findViewById(R.id.priceProductList);
+            disPrice202 = itemView.findViewById(R.id.discountPriceProductList);
+            disPrice202.setPaintFlags(disPrice202.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
     }
 }

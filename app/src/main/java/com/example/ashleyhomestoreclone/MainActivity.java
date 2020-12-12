@@ -35,17 +35,17 @@ import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static HashMap<String, Stack<Fragment>> mStacks;
-    public static final String SHOP_FRAGMENT = "SHOP_FRAGMENT";
-    public static final String STORE_FRAGMENT = "STORE_FRAGMENT";
-    public static final String HOME_FRAGMENT = "HOME_FRAGMENT";
-    public static final String CHAT_FRAGMENT = "CHAT_FRAGMENT";
-    public static final String MORE_FRAGMENT = "MORE_FRAGMENT";
-    public static BottomNavigationViewEx bottomNavigationViewEx;
+    public static HashMap<String, Stack<Fragment>> mStacks202;
+    String SHOP_FRAGMENT202 = "SHOP_FRAGMENT";
+    String STORE_FRAGMENT202 = "STORE_FRAGMENT";
+    String HOME_FRAGMENT202 = "HOME_FRAGMENT";
+    String CHAT_FRAGMENT202 = "CHAT_FRAGMENT";
+    String MORE_FRAGMENT202 = "MORE_FRAGMENT";
+    public static BottomNavigationViewEx bottomNavigationViewEx202;
 
-    FirebaseUser firebaseUser;
+    FirebaseUser firebaseUser202;
 
-    private String mCurrentTab;
+    private String mCurrentTab202;
 
 
     @Override
@@ -53,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation_main);
-        bottomNavigationViewEx.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        bottomNavigationViewEx202 = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation_main);
+        bottomNavigationViewEx202.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        mStacks = new HashMap<String, Stack<Fragment>>();
-        mStacks.put(SHOP_FRAGMENT, new Stack<Fragment>());
-        mStacks.put(STORE_FRAGMENT, new Stack<Fragment>());
-        mStacks.put(HOME_FRAGMENT, new Stack<Fragment>());
-        mStacks.put(CHAT_FRAGMENT, new Stack<Fragment>());
-        mStacks.put(MORE_FRAGMENT, new Stack<Fragment>());
+        mStacks202 = new HashMap<String, Stack<Fragment>>();
+        mStacks202.put(SHOP_FRAGMENT202, new Stack<Fragment>());
+        mStacks202.put(STORE_FRAGMENT202, new Stack<Fragment>());
+        mStacks202.put(HOME_FRAGMENT202, new Stack<Fragment>());
+        mStacks202.put(CHAT_FRAGMENT202, new Stack<Fragment>());
+        mStacks202.put(MORE_FRAGMENT202, new Stack<Fragment>());
 
-        bottomNavigationViewEx.setSelectedItemId(R.id.action_home);
+        bottomNavigationViewEx202.setSelectedItemId(R.id.action_home);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -73,19 +73,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_shop:
-                    selectedTab(SHOP_FRAGMENT);
+                    selectedTab(SHOP_FRAGMENT202);
                     return true;
                 case R.id.action_store:
-                    selectedTab(STORE_FRAGMENT);
+                    selectedTab(STORE_FRAGMENT202);
                     return true;
                 case R.id.action_home:
-                    selectedTab(HOME_FRAGMENT);
+                    selectedTab(HOME_FRAGMENT202);
                     return true;
                 case R.id.action_chat:
-                    selectedTab(CHAT_FRAGMENT);
+                    selectedTab(CHAT_FRAGMENT202);
                     return true;
                 case R.id.action_more:
-                    selectedTab(MORE_FRAGMENT);
+                    selectedTab(MORE_FRAGMENT202);
                     return true;
 
             }
@@ -100,54 +100,54 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void selectedTab(String tabId) {
-        mCurrentTab = tabId;
+    private void selectedTab(String tabId202) {
+        mCurrentTab202 = tabId202;
 
-        if (mStacks.get(tabId).size() == 0) {
-            if (tabId.equals(SHOP_FRAGMENT)) {
-                pushFragments(tabId, new ShopFragment(), true);
-            } else if (tabId.equals(STORE_FRAGMENT)) {
-                pushFragments(tabId, new StoreFragment(), true);
-            } else if (tabId.equals(HOME_FRAGMENT)) {
-                pushFragments(tabId, new HomeFragment(), true);
-            } else if (tabId.equals(CHAT_FRAGMENT)) {
-                pushFragments(tabId, new ChatFragment(), true);
-            } else if (tabId.equals(MORE_FRAGMENT)) {
-                if(firebaseUser != null) {
-                    pushFragments(tabId, new MoreAfterLoginFragment(), true);
+        if (mStacks202.get(tabId202).size() == 0) {
+            if (tabId202.equals(SHOP_FRAGMENT202)) {
+                pushFragments(tabId202, new ShopFragment(), true);
+            } else if (tabId202.equals(STORE_FRAGMENT202)) {
+                pushFragments(tabId202, new StoreFragment(), true);
+            } else if (tabId202.equals(HOME_FRAGMENT202)) {
+                pushFragments(tabId202, new HomeFragment(), true);
+            } else if (tabId202.equals(CHAT_FRAGMENT202)) {
+                pushFragments(tabId202, new ChatFragment(), true);
+            } else if (tabId202.equals(MORE_FRAGMENT202)) {
+                if(firebaseUser202 != null) {
+                    pushFragments(tabId202, new MoreAfterLoginFragment(), true);
                 } else {
-                    pushFragments(tabId, new MoreFragment(), true);
+                    pushFragments(tabId202, new MoreFragment(), true);
                 }
             }
         } else {
-            pushFragments(tabId, mStacks.get(tabId).lastElement(), false);
+            pushFragments(tabId202, mStacks202.get(tabId202).lastElement(), false);
         }
     }
 
     public void pushFragments(String tag, Fragment fragment, boolean shouldAdd) {
         if (shouldAdd)
-            mStacks.get(tag).push(fragment);
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction();
-        ft.replace(R.id.main_container, fragment);
-        ft.commit();
+            mStacks202.get(tag).push(fragment);
+        FragmentManager manager202 = getSupportFragmentManager();
+        FragmentTransaction ft202 = manager202.beginTransaction();
+        ft202.replace(R.id.main_container, fragment);
+        ft202.commit();
     }
 
     public void popFragments() {
-        Fragment fragment = mStacks.get(mCurrentTab).elementAt(mStacks.get(mCurrentTab).size() - 2);
+        Fragment fragment202 = mStacks202.get(mCurrentTab202).elementAt(mStacks202.get(mCurrentTab202).size() - 2);
 
-        mStacks.get(mCurrentTab).pop();
+        mStacks202.get(mCurrentTab202).pop();
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction();
-        ft.replace(R.id.main_container, fragment);
+        FragmentManager manager202 = getSupportFragmentManager();
+        FragmentTransaction ft = manager202.beginTransaction();
+        ft.replace(R.id.main_container, fragment202);
         ft.commit();
     }
 
     @Override
     public void onBackPressed() {
-        if (mStacks.get(mCurrentTab).size() == 1) {
-            bottomNavigationViewEx.setSelectedItemId(R.id.action_home);
+        if (mStacks202.get(mCurrentTab202).size() == 1) {
+            bottomNavigationViewEx202.setSelectedItemId(R.id.action_home);
             gotoFragment(new HomeFragment());
             return;
         }
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUser202 = FirebaseAuth.getInstance().getCurrentUser();
         if(!isInternetAvailable()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setMessage("Please connect to the internet")
@@ -177,20 +177,20 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
         }
-        if(firebaseUser != null) {
-            bottomNavigationViewEx.setSelectedItemId(R.id.action_home);
+        if(firebaseUser202 != null) {
+            bottomNavigationViewEx202.setSelectedItemId(R.id.action_home);
         }
     }
 
 
     public boolean isInternetAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) MainActivity.this
+        ConnectivityManager connectivityManager202 = (ConnectivityManager) MainActivity.this
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        if ((connectivityManager
-                .getNetworkInfo(ConnectivityManager.TYPE_MOBILE) != null && connectivityManager
+        if ((connectivityManager202
+                .getNetworkInfo(ConnectivityManager.TYPE_MOBILE) != null && connectivityManager202
                 .getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED)
-                || (connectivityManager
-                .getNetworkInfo(ConnectivityManager.TYPE_WIFI) != null && connectivityManager
+                || (connectivityManager202
+                .getNetworkInfo(ConnectivityManager.TYPE_WIFI) != null && connectivityManager202
                 .getNetworkInfo(ConnectivityManager.TYPE_WIFI)
                 .getState() == NetworkInfo.State.CONNECTED)) {
             return true;

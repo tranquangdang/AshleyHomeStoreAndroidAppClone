@@ -23,28 +23,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MoreAfterLoginFragment extends BaseFragment {
-    TextView name;
-    Button btnLogout;
+    TextView name202;
+    Button btnLogout202;
 
-    FirebaseUser firebaseUser;
-    DatabaseReference databaseReference;
+    FirebaseUser firebaseUser202;
+    DatabaseReference databaseReference202;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_fragment_more_after_login, container, false);
+        View view202 = inflater.inflate(R.layout.layout_fragment_more_after_login, container, false);
 
-        name = view.findViewById(R.id.cust_name);
-        btnLogout = view.findViewById(R.id.btn_logout);
+        name202 = view202.findViewById(R.id.cust_name);
+        btnLogout202 = view202.findViewById(R.id.btn_logout);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        firebaseUser202 = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference202 = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser202.getUid());
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference202.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserBean user = snapshot.getValue(UserBean.class);
-                name.setText(user.getFirstName() + " " + user.getLastName());
+                UserBean user202 = snapshot.getValue(UserBean.class);
+                name202.setText(user202.getFirstName() + " " + user202.getLastName());
             }
 
             @Override
@@ -53,14 +53,14 @@ public class MoreAfterLoginFragment extends BaseFragment {
             }
         });
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        btnLogout202.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                Intent intent202 = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent202);
             }
         });
-        return view;
+        return view202;
     }
 }

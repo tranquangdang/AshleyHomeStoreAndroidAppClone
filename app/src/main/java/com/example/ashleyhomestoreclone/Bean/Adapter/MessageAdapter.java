@@ -18,60 +18,60 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
-    public static final int MSG_TYPE_LEFT = 0;
-    public static final int MSG_TYPE_RIGHT = 1;
+    public static final int MSG_TYPE_LEFT202 = 0;
+    public static final int MSG_TYPE_RIGHT202 = 1;
 
-    private Context mContext;
-    private ArrayList<ChatMessageBean> arrayList;
+    private Context mContext202;
+    private ArrayList<ChatMessageBean> arrayList202;
 
-    FirebaseUser firebaseUser;
+    FirebaseUser firebaseUser202;
 
-    public MessageAdapter(Context mContext, ArrayList<ChatMessageBean> arrayList) {
-        this.mContext = mContext;
-        this.arrayList = arrayList;
+    public MessageAdapter(Context mContext202, ArrayList<ChatMessageBean> arrayList202) {
+        this.mContext202 = mContext202;
+        this.arrayList202 = arrayList202;
     }
 
     @NonNull
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(viewType == MSG_TYPE_RIGHT) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.item_message_sent, parent, false);
+        if(viewType == MSG_TYPE_RIGHT202) {
+            View view = LayoutInflater.from(mContext202).inflate(R.layout.item_message_sent, parent, false);
             return new MessageAdapter.ViewHolder(view);
         } else {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.item_message_received, parent, false);
+            View view = LayoutInflater.from(mContext202).inflate(R.layout.item_message_received, parent, false);
             return new MessageAdapter.ViewHolder(view);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
-        ChatMessageBean chat = arrayList.get(position);
-        holder.txtMessage.setText(chat.getMessage());
-        holder.txtTime.setText(chat.getTime());
+        ChatMessageBean chat202 = arrayList202.get(position);
+        holder.txtMessage202.setText(chat202.getMessage());
+        holder.txtTime202.setText(chat202.getTime());
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return arrayList202.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtMessage, txtTime;
+        TextView txtMessage202, txtTime202;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtMessage = itemView.findViewById(R.id.text_message_body);
-            txtTime = itemView.findViewById(R.id.text_message_time);
+            txtMessage202 = itemView.findViewById(R.id.text_message_body);
+            txtTime202 = itemView.findViewById(R.id.text_message_time);
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(arrayList.get(position).getSender().equals(firebaseUser.getUid())) {
-            return MSG_TYPE_RIGHT;
+        firebaseUser202 = FirebaseAuth.getInstance().getCurrentUser();
+        if(arrayList202.get(position).getSender().equals(firebaseUser202.getUid())) {
+            return MSG_TYPE_RIGHT202;
         } else {
-            return MSG_TYPE_LEFT;
+            return MSG_TYPE_LEFT202;
         }
     }
 }
