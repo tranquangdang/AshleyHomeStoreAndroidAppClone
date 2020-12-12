@@ -80,7 +80,7 @@ public class StoreMapsFragment extends BaseFragment {
         logoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.popFragments();
+                mActivity202.popFragments();
             }
         });
 

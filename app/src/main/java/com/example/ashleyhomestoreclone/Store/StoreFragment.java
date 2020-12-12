@@ -16,8 +16,6 @@ import com.example.ashleyhomestoreclone.Bean.BaseFragment;
 import com.example.ashleyhomestoreclone.Home.HomeFragment;
 import com.example.ashleyhomestoreclone.R;
 
-import static com.example.ashleyhomestoreclone.MainActivity.MORE_FRAGMENT;
-import static com.example.ashleyhomestoreclone.MainActivity.mStacks;
 
 public class StoreFragment extends BaseFragment {
     private Button btnUse;
@@ -37,7 +35,7 @@ public class StoreFragment extends BaseFragment {
         logoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.pushFragments("STORE_FRAGMENT", new HomeFragment(),true);
+                mActivity202.pushFragments("STORE_FRAGMENT", new HomeFragment(),true);
             }
         });
 
@@ -45,7 +43,7 @@ public class StoreFragment extends BaseFragment {
         btnUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mActivity.pushFragments("STORE_FRAGMENT", new StoreMapsFragment(),true);
+                mActivity202.pushFragments("STORE_FRAGMENT", new StoreMapsFragment(),true);
             }
         });
         return view;
