@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "303865324638",
+    "project_id": "ashleyhomestoreclone",
+    "storage_bucket": "ashleyhomestoreclone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303865324638:android:3e8900944fad1d5714c0cf",
+        "android_client_info": {
+          "package_name": "com.example.ashleyhomestoreclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303865324638-i86jp9jmufef0enuspqvis4igipr2ori.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAxyrRBCv41uh9Pyr5vmOwYows0nT68I0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303865324638-i86jp9jmufef0enuspqvis4igipr2ori.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

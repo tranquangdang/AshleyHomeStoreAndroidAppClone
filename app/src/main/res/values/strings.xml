@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ashley Clone</string>
+    <string name="strike"><strike> crossed </strike> </string>
+    <string name="forgotPassword"><u> Forgot Password? </u> </string>
+    <string name="createAccount"><u> Create an Account </u> </string>
+    <string name="geocode"><u> 90011 </u> </string>
+    <string name="discountPrice"><strike> $169.99 </strike> </string>
+</resources>
